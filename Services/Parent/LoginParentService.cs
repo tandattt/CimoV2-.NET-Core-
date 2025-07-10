@@ -2,7 +2,6 @@
 using Cimo.Dtos;
 using Cimo.Dtos.Parent.Request;
 using Cimo.Dtos.Parent.Response;
-using Cimo.Dtos.Response.Teacher;
 using Cimo.Exceptions;
 using Cimo.Models;
 using Cimo.Services.Interface;

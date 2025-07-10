@@ -21,9 +21,9 @@ public partial class TeacherDetail
 
     public virtual AcademicLevel AcademicLevel { get; set; } = null!;
 
-    public virtual ICollection<ClassroomHomeroomTeacher> ClassroomHomeroomTeachers { get; set; } = new List<ClassroomHomeroomTeacher>();
-
     public virtual ICollection<ClassroomSubjectTeacher> ClassroomSubjectTeachers { get; set; } = new List<ClassroomSubjectTeacher>();
+
+    public virtual ICollection<ClassroomTeacherRole> ClassroomTeacherRoles { get; set; } = new List<ClassroomTeacherRole>();
 
     public virtual SubjectGroup SubjectGroup { get; set; } = null!;
 

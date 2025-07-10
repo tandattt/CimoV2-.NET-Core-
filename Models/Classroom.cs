@@ -19,6 +19,9 @@ public partial class Classroom
 
     public int GradeLevelId { get; set; }
 
+    public virtual ICollection<ClassroomSubjectTeacher> ClassroomSubjectTeachers { get; set; } = new List<ClassroomSubjectTeacher>();
+
+    public virtual ICollection<ClassroomTeacherRole> ClassroomTeacherRoles { get; set; } = new List<ClassroomTeacherRole>();
 
     public virtual GradeLevel GradeLevel { get; set; } = null!;
 

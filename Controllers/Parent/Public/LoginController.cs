@@ -1,4 +1,4 @@
-﻿using Cimo.Dtos.Response.Teacher;
+﻿
 using Cimo.Services.Parent.Interface;
 using Hotel_Management.Exceptions;
 using Microsoft.AspNetCore.Authorization;

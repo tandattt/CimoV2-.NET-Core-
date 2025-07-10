@@ -22,6 +22,13 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Classroom> Classrooms { get; set; }
 
+    public virtual DbSet<ClassroomSubjectTeacher> ClassroomSubjectTeachers { get; set; }
+
+    public virtual DbSet<ClassroomTeacherRole> ClassroomTeacherRoles { get; set; }
+
+    public virtual DbSet<FeatureSetting> FeatureSettings { get; set; }
+
+    public virtual DbSet<FeatureUserAccess> FeatureUserAccesses { get; set; }
 
     public virtual DbSet<GradeLevel> GradeLevels { get; set; }
 
@@ -64,9 +71,10 @@ public partial class AppDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
-    public virtual DbSet<FeatureSetting> FeatureSettings { get; set; }
-    public virtual DbSet<FeatureUserAccess> FeatureUserAccesses { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySql("server=dbxjanua.duckdns.org;database=cimo;user=cimo;password=123456Az@", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.42-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -107,7 +115,7 @@ public partial class AppDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("academic_years");
+            entity.ToTable("academic_year");
 
             entity.Property(e => e.Id)
                 .HasMaxLength(16)
@@ -171,7 +179,181 @@ public partial class AppDbContext : DbContext
                 .HasConstraintName("FKkoixvdplr7y7ild17y6hu6lrk");
         });
 
-        
+        modelBuilder.Entity<ClassroomSubjectTeacher>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("classroom_subject_teacher");
+
+            entity.HasIndex(e => e.ClassroomId, "FK8ls4opp2ug5rnpl90aavvjr12");
+
+            entity.HasIndex(e => e.TeacherDetailId, "FK8ojvpttnljbe5fhyx56kmbpud");
+
+            entity.HasIndex(e => e.AcademicYearsId, "FKa2aqdvvrjh0l643xs68700rig");
+
+            entity.HasIndex(e => e.SubjectId, "FKbk6cnrgcf47ya5qc6qdudks4i");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("id");
+            entity.Property(e => e.AcademicYearsId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("academic_years_id");
+            entity.Property(e => e.ClassroomId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("classroom_id");
+            entity.Property(e => e.CreateAt)
+                .HasMaxLength(6)
+                .HasColumnName("create_at");
+            entity.Property(e => e.CreateBy)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("create_by");
+            entity.Property(e => e.SubjectId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("subject_id");
+            entity.Property(e => e.TeacherDetailId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("teacher_detail_id");
+            entity.Property(e => e.UpdateAt)
+                .HasMaxLength(6)
+                .HasColumnName("update_at");
+            entity.Property(e => e.UpdateBy)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("update_by");
+
+            entity.HasOne(d => d.AcademicYears).WithMany(p => p.ClassroomSubjectTeachers)
+                .HasForeignKey(d => d.AcademicYearsId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKa2aqdvvrjh0l643xs68700rig");
+
+            entity.HasOne(d => d.Classroom).WithMany(p => p.ClassroomSubjectTeachers)
+                .HasForeignKey(d => d.ClassroomId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK8ls4opp2ug5rnpl90aavvjr12");
+
+            entity.HasOne(d => d.Subject).WithMany(p => p.ClassroomSubjectTeachers)
+                .HasForeignKey(d => d.SubjectId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKbk6cnrgcf47ya5qc6qdudks4i");
+
+            entity.HasOne(d => d.TeacherDetail).WithMany(p => p.ClassroomSubjectTeachers)
+                .HasForeignKey(d => d.TeacherDetailId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK8ojvpttnljbe5fhyx56kmbpud");
+        });
+
+        modelBuilder.Entity<ClassroomTeacherRole>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("classroom_teacher_role");
+
+            entity.HasIndex(e => e.AcademicYear, "fk_academic_year");
+
+            entity.HasIndex(e => e.ClassroomId, "fk_classroom");
+
+            entity.HasIndex(e => e.RoleId, "fk_role");
+
+            entity.HasIndex(e => e.TeacherDetail, "fk_teacher_detail");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("id");
+            entity.Property(e => e.AcademicYear)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("academic_year");
+            entity.Property(e => e.ClassroomId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("classroom_id");
+            entity.Property(e => e.RoleId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("role_id");
+            entity.Property(e => e.TeacherDetail)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("teacher_detail");
+
+            entity.HasOne(d => d.AcademicYearNavigation).WithMany(p => p.ClassroomTeacherRoles)
+                .HasForeignKey(d => d.AcademicYear)
+                .HasConstraintName("fk_academic_year");
+
+            entity.HasOne(d => d.Classroom).WithMany(p => p.ClassroomTeacherRoles)
+                .HasForeignKey(d => d.ClassroomId)
+                .HasConstraintName("fk_classroom");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.ClassroomTeacherRoles)
+                .HasForeignKey(d => d.RoleId)
+                .HasConstraintName("fk_role");
+
+            entity.HasOne(d => d.TeacherDetailNavigation).WithMany(p => p.ClassroomTeacherRoles)
+                .HasForeignKey(d => d.TeacherDetail)
+                .HasConstraintName("fk_teacher_detail");
+        });
+
+        modelBuilder.Entity<FeatureSetting>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity
+                .ToTable("feature_setting")
+                .UseCollation("utf8mb4_unicode_ci");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .HasColumnName("name");
+        });
+
+        modelBuilder.Entity<FeatureUserAccess>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity
+                .ToTable("feature_user_access")
+                .UseCollation("utf8mb4_unicode_ci");
+
+            entity.HasIndex(e => e.RoleId, "fk_feature_user_access_role");
+
+            entity.HasIndex(e => e.FeatureSettingId, "fk_feature_user_access_setting");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.FeatureSettingId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("feature_setting_id");
+            entity.Property(e => e.IsActive)
+                .HasDefaultValueSql("b'1'")
+                .HasColumnType("bit(1)")
+                .HasColumnName("is_active");
+            entity.Property(e => e.RoleId)
+                .HasMaxLength(16)
+                .IsFixedLength()
+                .HasColumnName("role_id");
+
+            entity.HasOne(d => d.FeatureSetting).WithMany(p => p.FeatureUserAccesses)
+                .HasForeignKey(d => d.FeatureSettingId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_feature_user_access_setting");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.FeatureUserAccesses)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_feature_user_access_role");
+        });
 
         modelBuilder.Entity<GradeLevel>(entity =>
         {

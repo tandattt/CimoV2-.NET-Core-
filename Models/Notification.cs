@@ -9,7 +9,7 @@ public partial class Notification
 
     public DateTime? CreatedAt { get; set; }
 
-    public bool? IsRead { get; set; }
+    public ulong? IsRead { get; set; }
 
     public string? Message { get; set; }
 

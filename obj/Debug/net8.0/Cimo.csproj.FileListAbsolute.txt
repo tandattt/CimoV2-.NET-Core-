@@ -105,7 +105,6 @@ D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\staticwebassets\msbuild.build.Cimo.props
 D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Cimo.props
 D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Cimo.props
 D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\staticwebassets.pack.json
-D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\Cimo.csproj.Up2Date
 D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\Cimo.dll
 D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\refint\Cimo.dll
@@ -131,3 +130,5 @@ D:\CimoV2_C#\Cimo\Cimo\bin\Debug\net8.0\StackExchange.Redis.dll
 D:\CimoV2_C#\Cimo\Cimo\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 D:\CimoV2_C#\Cimo\Cimo\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\CimoV2_C#\Cimo\Cimo\bin\Debug\net8.0\Scrutor.dll
+D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\Cimo.sourcelink.json
+D:\CimoV2_C#\Cimo\Cimo\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

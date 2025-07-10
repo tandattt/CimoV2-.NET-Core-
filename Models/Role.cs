@@ -17,5 +17,9 @@ public partial class Role
 
     public byte[]? UpdateBy { get; set; }
 
+    public virtual ICollection<ClassroomTeacherRole> ClassroomTeacherRoles { get; set; } = new List<ClassroomTeacherRole>();
+
+    public virtual ICollection<FeatureUserAccess> FeatureUserAccesses { get; set; } = new List<FeatureUserAccess>();
+
     public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }

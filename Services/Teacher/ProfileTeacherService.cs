@@ -24,13 +24,13 @@ namespace Cimo.Services.Teacher
                 .Include(t => t.TeacherDetail)
                     .ThenInclude(td => td.SubjectGroup)
                 .FirstOrDefaultAsync(u => u.Id == id);
-            var listClass = await _dbContext.ClassroomSubjectTeachers
-                .Where(cl => cl.TeacherDetailId == id)
-                .Select(x => x.Classroom)
-                .ProjectTo<ClassDto>(_mapper.ConfigurationProvider)
-                .ToListAsync();
+            //var listClass = await _dbContext.ClassroomSubjectTeachers
+            //    .Where(cl => cl.TeacherDetailId == id)
+            //    .Select(x => x.Classroom)
+            //    .ProjectTo<ClassDto>(_mapper.ConfigurationProvider)
+            //    .ToListAsync();
             var userMapper = _mapper.Map<ProfileTeacherResponseDto>(user);
-            userMapper.Class = listClass;
+            //userMapper.Class = listClass;
             return userMapper;
         } 
     }

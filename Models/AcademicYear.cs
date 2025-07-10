@@ -21,9 +21,9 @@ public partial class AcademicYear
 
     public byte[]? UpdateBy { get; set; }
 
-    public virtual ICollection<ClassroomHomeroomTeacher> ClassroomHomeroomTeachers { get; set; } = new List<ClassroomHomeroomTeacher>();
-
     public virtual ICollection<ClassroomSubjectTeacher> ClassroomSubjectTeachers { get; set; } = new List<ClassroomSubjectTeacher>();
+
+    public virtual ICollection<ClassroomTeacherRole> ClassroomTeacherRoles { get; set; } = new List<ClassroomTeacherRole>();
 
     public virtual ICollection<Semester> Semesters { get; set; } = new List<Semester>();
 

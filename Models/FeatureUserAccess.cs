@@ -1,13 +1,19 @@
-﻿namespace Cimo.Models
-{
-    public class FeatureUserAccess
-    {
-        public int Id { get; set; }
-        public byte[] RoleId { get; set; }
-        public byte[] FeatureSettingId { get; set; }
-        public bool IsActive { get; set; }
+﻿using System;
+using System.Collections.Generic;
 
-        public Role Role { get; set; } = null!;
-        public FeatureSetting FeatureSetting { get; set; } = null!;
-    }
+namespace Cimo.Models;
+
+public partial class FeatureUserAccess
+{
+    public int Id { get; set; }
+
+    public byte[] RoleId { get; set; } = null!;
+
+    public byte[] FeatureSettingId { get; set; } = null!;
+
+    public ulong IsActive { get; set; }
+
+    public virtual FeatureSetting FeatureSetting { get; set; } = null!;
+
+    public virtual Role Role { get; set; } = null!;
 }

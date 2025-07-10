@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "Cimo.Dtos.Resquest.Parent.LoginParentRequestDto",
+        "Type": "Cimo.Dtos.Parent.Request.LoginParentRequestDto",
         "IsRequired": true
       }
     ],
@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "Cimo.Dtos.Resquest.Parent.VerifyOtpParentRequestDto",
+        "Type": "Cimo.Dtos.Parent.Request.VerifyOtpParentRequestDto",
         "IsRequired": true
       }
     ],
@@ -41,7 +41,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "Cimo.Dtos.Resquest.Teacher.LoginTeacherRequestDto",
+        "Type": "Cimo.Dtos.Teacher.Resquest.LoginTeacherRequestDto",
         "IsRequired": true
       }
     ],
