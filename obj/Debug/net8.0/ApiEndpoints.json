@@ -1,0 +1,70 @@
+[
+  {
+    "ContainingType": "Cimo.Controllers.Parent.Public.LoginController",
+    "Method": "SendOtp",
+    "RelativePath": "Parent/SendOtp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Cimo.Dtos.Resquest.Parent.LoginParentRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Parent.Public.LoginController",
+    "Method": "VerifyOtp",
+    "RelativePath": "Parent/VerifyOtp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Cimo.Dtos.Resquest.Parent.VerifyOtpParentRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Teacher.Public.LoginController",
+    "Method": "Login",
+    "RelativePath": "Teacher/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Cimo.Dtos.Resquest.Teacher.LoginTeacherRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Teacher.ProfileController",
+    "Method": "ProfileTeacher",
+    "RelativePath": "Teacher/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Teacher.Public.LoginController",
+    "Method": "test",
+    "RelativePath": "Teacher/test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
