@@ -1,4 +1,4 @@
-﻿namespace Cimo.Dtos
+﻿namespace Cimo.Dtos.Common
 {
     public class ResponseApi<T> where T : class
     {

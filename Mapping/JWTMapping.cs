@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cimo.Dtos;
+using Cimo.Dtos.Common;
 using Cimo.Models;
 
 namespace Cimo.Mapping

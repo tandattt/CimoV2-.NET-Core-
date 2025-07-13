@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cimo.Dtos;
+using Cimo.Dtos.Common;
 using Cimo.Dtos.Teacher.Response;
 using Cimo.Dtos.Teacher.Resquest;
 using Cimo.Exceptions;

@@ -21,7 +21,7 @@ public partial class Semester
 
     public byte[]? UpdateBy { get; set; }
 
-    public byte[] AcademicYearsId { get; set; } = null!;
+    public byte[]? AcademicYearsId { get; set; } = null!;
 
     public virtual AcademicYear AcademicYears { get; set; } = null!;
 

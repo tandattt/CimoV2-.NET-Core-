@@ -1,4 +1,6 @@
-﻿namespace Cimo.Dtos.Teacher.Response
+﻿using Cimo.Dtos.Shared;
+
+namespace Cimo.Dtos.Teacher.Response
 {
     public class ProfileTeacherResponseDto
     {
@@ -16,28 +18,6 @@
         public ICollection<ClassDto> Class { get; set; }
 
     }
-    public class TeacherDetailDto
-    {
-        public SubjectGroupDto SubjectGroup { get; set; }
-        public AcademicLevelDto AcademicLevel { get; set; }
-    }
-    public class SubjectGroupDto
-    {
-        public Guid Id { get; set; }
-        public string? Name { get; set; }
-    }
-    public class AcademicLevelDto
-    {
-        public Guid Id { get; set; }
-        public string? Name { get; set; }
-    }
-    public class ClassTeacherDto
-    {
-        public ClassDto Classroom { get; set; }
-    }
-    public class ClassDto
-    {
-        public Guid Id { get; set; }
-        public string Name { set; get; }
-    }
+
+
 }

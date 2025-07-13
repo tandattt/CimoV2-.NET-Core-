@@ -1,7 +1,8 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿
 using AutoMapper;
 using Cimo.Models;
 using Cimo.Dtos.Teacher.Response;
+using Cimo.Dtos.Shared;
 namespace Cimo.Mapping
 {
     public class TeacherMapping : Profile
@@ -16,8 +17,8 @@ namespace Cimo.Mapping
             CreateMap<AcademicLevel, AcademicLevelDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => new Guid(src.Id)));
             //CreateMap<ClassroomSubjectTeacher, ClassTeacherDto>();
-            CreateMap<Classroom,ClassDto>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => new Guid(src.Id)));
+            CreateMap<Classroom, ClassDto>();
+                //.ForMember(dest => dest.Id, opt => opt.MapFrom(src => new Guid(src.Id)));
         }
     }
 }

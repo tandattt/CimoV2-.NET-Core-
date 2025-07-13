@@ -19,6 +19,7 @@ DotNetEnv.Env.Load();
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<GlobalExceptionFilter>();
+    options.Filters.Add<SuccessResponseFilter>();
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -97,6 +98,7 @@ builder.Services.Scan(scan => scan
     .AddClasses(c => c.Where(type => type.Name.EndsWith("Service")))
     .AsImplementedInterfaces()
     .WithScopedLifetime());
+
 
 var app = builder.Build();
 

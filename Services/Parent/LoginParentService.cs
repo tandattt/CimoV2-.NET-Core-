@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Cimo.Dtos;
+using Cimo.Dtos.Common;
 using Cimo.Dtos.Parent.Request;
 using Cimo.Dtos.Parent.Response;
 using Cimo.Exceptions;
 using Cimo.Models;
-using Cimo.Services.Interface;
+using Cimo.Services.Common.Interface;
 using Cimo.Services.Parent.Interface;
 using Hotel_Management.Exceptions;
 using Hotel_Management.Utils;

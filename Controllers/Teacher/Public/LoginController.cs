@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace Cimo.Controllers.Teacher.Public
 {
-    [Route("Teacher")]
+    [Route("teacher")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -34,13 +34,13 @@ namespace Cimo.Controllers.Teacher.Public
 
             return Ok(user_id);
         }
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginTeacherRequestDto dto)
         {
             var result = await _loginTeacherService.LoginTeacher(dto);
-            var response = ResponseApi<LoginTeacherResponseDto>.Success(result);
+            //var response = ResponseApi<LoginTeacherResponseDto>.Success(result);
             //Console.WriteLine(response);
-            return Ok(response);
+            return Ok(result);
 
         }
         

@@ -72,9 +72,6 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=dbxjanua.duckdns.org;database=cimo;user=cimo;password=123456Az@", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.42-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -185,26 +182,12 @@ public partial class AppDbContext : DbContext
 
             entity.ToTable("classroom_subject_teacher");
 
-            entity.HasIndex(e => e.ClassroomId, "FK8ls4opp2ug5rnpl90aavvjr12");
-
-            entity.HasIndex(e => e.TeacherDetailId, "FK8ojvpttnljbe5fhyx56kmbpud");
-
-            entity.HasIndex(e => e.AcademicYearsId, "FKa2aqdvvrjh0l643xs68700rig");
-
             entity.HasIndex(e => e.SubjectId, "FKbk6cnrgcf47ya5qc6qdudks4i");
 
             entity.Property(e => e.Id)
                 .HasMaxLength(16)
                 .IsFixedLength()
                 .HasColumnName("id");
-            entity.Property(e => e.AcademicYearsId)
-                .HasMaxLength(16)
-                .IsFixedLength()
-                .HasColumnName("academic_years_id");
-            entity.Property(e => e.ClassroomId)
-                .HasMaxLength(16)
-                .IsFixedLength()
-                .HasColumnName("classroom_id");
             entity.Property(e => e.CreateAt)
                 .HasMaxLength(6)
                 .HasColumnName("create_at");
@@ -216,10 +199,6 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(16)
                 .IsFixedLength()
                 .HasColumnName("subject_id");
-            entity.Property(e => e.TeacherDetailId)
-                .HasMaxLength(16)
-                .IsFixedLength()
-                .HasColumnName("teacher_detail_id");
             entity.Property(e => e.UpdateAt)
                 .HasMaxLength(6)
                 .HasColumnName("update_at");
@@ -228,25 +207,10 @@ public partial class AppDbContext : DbContext
                 .IsFixedLength()
                 .HasColumnName("update_by");
 
-            entity.HasOne(d => d.AcademicYears).WithMany(p => p.ClassroomSubjectTeachers)
-                .HasForeignKey(d => d.AcademicYearsId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FKa2aqdvvrjh0l643xs68700rig");
-
-            entity.HasOne(d => d.Classroom).WithMany(p => p.ClassroomSubjectTeachers)
-                .HasForeignKey(d => d.ClassroomId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK8ls4opp2ug5rnpl90aavvjr12");
-
             entity.HasOne(d => d.Subject).WithMany(p => p.ClassroomSubjectTeachers)
                 .HasForeignKey(d => d.SubjectId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FKbk6cnrgcf47ya5qc6qdudks4i");
-
-            entity.HasOne(d => d.TeacherDetail).WithMany(p => p.ClassroomSubjectTeachers)
-                .HasForeignKey(d => d.TeacherDetailId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK8ojvpttnljbe5fhyx56kmbpud");
         });
 
         modelBuilder.Entity<ClassroomTeacherRole>(entity =>
@@ -282,7 +246,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.TeacherDetail)
                 .HasMaxLength(16)
                 .IsFixedLength()
-                .HasColumnName("teacher_detail");
+                .HasColumnName("teacher_detail_id");
 
             entity.HasOne(d => d.AcademicYearNavigation).WithMany(p => p.ClassroomTeacherRoles)
                 .HasForeignKey(d => d.AcademicYear)
@@ -429,9 +393,6 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(16)
                 .IsFixedLength()
                 .HasColumnName("user_id");
-            entity.Property(e => e.AvatarUrl)
-                .HasMaxLength(200)
-                .HasColumnName("avatar_url");
             entity.Property(e => e.CreateAt)
                 .HasMaxLength(6)
                 .HasColumnName("create_at");
@@ -728,6 +689,10 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.LastName)
                 .HasMaxLength(45)
                 .HasColumnName("last_name");
+            entity.Property(e => e.Gender)
+               .HasColumnType("enum('MALE','FEMALE')")
+               .HasColumnName("gender");
+            entity.Property(e => e.Birthday).HasColumnName("birthday");
             entity.Property(e => e.UpdateAt)
                 .HasMaxLength(6)
                 .HasColumnName("update_at");

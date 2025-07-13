@@ -1,8 +1,8 @@
-﻿using Cimo.Services.Interface;
+﻿using Cimo.Services.Common.Interface;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace Cimo.Services.Interface
+namespace Cimo.Services.Common
 {
     public class RedisCacheService : IRedisCacheService
     {

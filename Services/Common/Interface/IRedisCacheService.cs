@@ -1,4 +1,4 @@
-﻿namespace Cimo.Services.Interface
+﻿namespace Cimo.Services.Common.Interface
 {
     public interface IRedisCacheService
     {

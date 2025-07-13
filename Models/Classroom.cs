@@ -5,7 +5,7 @@ namespace Cimo.Models;
 
 public partial class Classroom
 {
-    public byte[] Id { get; set; } = null!;
+    public byte[]? Id { get; set; } = null!;
 
     public DateTime? CreateAt { get; set; }
 
@@ -18,8 +18,6 @@ public partial class Classroom
     public byte[] UpdateBy { get; set; } = null!;
 
     public int GradeLevelId { get; set; }
-
-    public virtual ICollection<ClassroomSubjectTeacher> ClassroomSubjectTeachers { get; set; } = new List<ClassroomSubjectTeacher>();
 
     public virtual ICollection<ClassroomTeacherRole> ClassroomTeacherRoles { get; set; } = new List<ClassroomTeacherRole>();
 

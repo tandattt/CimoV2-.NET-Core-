@@ -17,9 +17,9 @@ public partial class StudentClassroom
 
     public byte[]? UpdateBy { get; set; }
 
-    public byte[] AcademicYearsId { get; set; } = null!;
+    public byte[]? AcademicYearsId { get; set; } = null!;
 
-    public byte[] ClassroomId { get; set; } = null!;
+    public byte[]? ClassroomId { get; set; } = null!;
 
     public byte[] StudentId { get; set; } = null!;
 

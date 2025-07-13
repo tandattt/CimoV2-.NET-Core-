@@ -2,7 +2,7 @@
   {
     "ContainingType": "Cimo.Controllers.Parent.Public.LoginController",
     "Method": "SendOtp",
-    "RelativePath": "Parent/SendOtp",
+    "RelativePath": "parent/send-otp",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -18,7 +18,7 @@
   {
     "ContainingType": "Cimo.Controllers.Parent.Public.LoginController",
     "Method": "VerifyOtp",
-    "RelativePath": "Parent/VerifyOtp",
+    "RelativePath": "parent/verify-otp",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -32,9 +32,108 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Cimo.Controllers.Teacher.ClassroomController",
+    "Method": "GetStudentsForAttendanceIn",
+    "RelativePath": "teacher/{class_id}/attendance-in/students",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "class_id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Cimo.Dtos.Shared.StudentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Teacher.ClassroomController",
+    "Method": "GetStudentsForAttendanceOut",
+    "RelativePath": "teacher/{class_id}/attendance-out/students",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "class_id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Cimo.Dtos.Shared.StudentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Teacher.AttendanceController",
+    "Method": "CheckIn",
+    "RelativePath": "teacher/check-in/{student_id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "student_id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Cimo.Dtos.Teacher.Resquest.CheckInTeacherRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cimo.Controllers.Teacher.FutureController",
+    "Method": "ListFuture",
+    "RelativePath": "teacher/list-future/{class_id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "class_id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Cimo.Dtos.Teacher.Response.FutureTeacherResponseDto, Cimo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Cimo.Controllers.Teacher.Public.LoginController",
     "Method": "Login",
-    "RelativePath": "Teacher/Login",
+    "RelativePath": "teacher/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -50,17 +149,27 @@
   {
     "ContainingType": "Cimo.Controllers.Teacher.ProfileController",
     "Method": "ProfileTeacher",
-    "RelativePath": "Teacher/me",
+    "RelativePath": "teacher/me",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Cimo.Dtos.Teacher.Response.ProfileTeacherResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Cimo.Controllers.Teacher.Public.LoginController",
     "Method": "test",
-    "RelativePath": "Teacher/test",
+    "RelativePath": "teacher/test",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Cimo.Dtos;
 using Cimo.Dtos.Parent.Request;
 using Cimo.Dtos.Parent.Response;
+using Cimo.Dtos.Common;
 
 namespace Cimo.Controllers.Parent.Public
 {
-    [Route("Parent")]
+    [Route("parent")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace Cimo.Controllers.Parent.Public
             _loginParentService = loginParentService;
         }
 
-        [HttpPost("SendOtp")]
+        [HttpPost("send-otp")]
         public async Task<IActionResult> SendOtp([FromBody] LoginParentRequestDto dto)
         {
             Random rand = new Random();
@@ -38,7 +38,7 @@ namespace Cimo.Controllers.Parent.Public
                 ));
 
         }
-        [HttpPost("VerifyOtp")]
+        [HttpPost("verify-otp")]
         public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpParentRequestDto dto)
         {
             bool result = await _loginParentService.VerifyOtp(dto);
@@ -49,8 +49,8 @@ namespace Cimo.Controllers.Parent.Public
                     ));
             }
             var token = await _loginParentService.CreateTokenParent(dto.PhoneNumber);
-            var response = ResponseApi<LoginParentResponseDto>.Success(token);
-            return Ok(response);
+            //var response = ResponseApi<LoginParentResponseDto>.Success(token);
+            return Ok(token);
 
         }
     }

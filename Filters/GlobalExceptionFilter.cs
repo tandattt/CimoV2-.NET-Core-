@@ -1,8 +1,8 @@
-﻿using Cimo.Dtos;
-using Hotel_Management.Exceptions;
+﻿using Hotel_Management.Exceptions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Cimo.Exceptions;
+using Cimo.Dtos.Common;
 
 namespace Cimo.Filters
 {
@@ -37,6 +37,41 @@ namespace Cimo.Filters
                     StatusCode = StatusCodes.Status403Forbidden
                 };
             }
+            else if (ex is BadRequestException)
+            {
+                context.Result = new BadRequestObjectResult(
+                    ResponseApi<ErrorDto>.Fail(new ErrorDto { Message = ex.Message }));
+            }
+            else if (ex is ConflictException)
+            {
+                context.Result = new ObjectResult(
+                    ResponseApi<ErrorDto>.Fail(new ErrorDto { Message = ex.Message }))
+                {
+                    StatusCode = StatusCodes.Status409Conflict
+                };
+            }
+            else if (ex is ValidationException)
+            {
+                context.Result = new BadRequestObjectResult(
+                    ResponseApi<ErrorDto>.Fail(new ErrorDto { Message = ex.Message }));
+            }
+            else if (ex is NullDataException)
+            {
+                context.Result = new ObjectResult(
+                    ResponseApi<ErrorDto>.Fail(new ErrorDto { Message = ex.Message }))
+                {
+                    StatusCode = StatusCodes.Status204NoContent // hoặc 404 nếu bạn thích
+                };
+            }
+            else if (ex is InternalErrorException)
+            {
+                context.Result = new ObjectResult(
+                    ResponseApi<ErrorDto>.Fail(new ErrorDto { Message = ex.Message }))
+                {
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+            }
+
             else
             {
                 _logger.LogError(ex, "Unhandled exception");

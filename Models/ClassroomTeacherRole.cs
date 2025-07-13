@@ -9,9 +9,9 @@ public partial class ClassroomTeacherRole
 
     public byte[] TeacherDetail { get; set; } = null!;
 
-    public byte[] ClassroomId { get; set; } = null!;
+    public byte[]? ClassroomId { get; set; } = null!;
 
-    public byte[] AcademicYear { get; set; } = null!;
+    public byte[]? AcademicYear { get; set; } = null!;
 
     public byte[] RoleId { get; set; } = null!;
 
@@ -22,4 +22,6 @@ public partial class ClassroomTeacherRole
     public virtual Role Role { get; set; } = null!;
 
     public virtual TeacherDetail TeacherDetailNavigation { get; set; } = null!;
+
+    public virtual ICollection<ClassroomSubjectTeacher> ClassroomSubjectTeachers { get; set; } = new List<ClassroomSubjectTeacher>();
 }

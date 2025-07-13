@@ -25,7 +25,7 @@ public partial class StudentScore
 
     public byte[] UpdateBy { get; set; } = null!;
 
-    public byte[] AcademicYearsId { get; set; } = null!;
+    public byte[]? AcademicYearsId { get; set; } = null!;
 
     public byte[] SemesterId { get; set; } = null!;
 

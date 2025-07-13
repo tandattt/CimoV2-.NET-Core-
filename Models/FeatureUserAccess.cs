@@ -11,7 +11,7 @@ public partial class FeatureUserAccess
 
     public byte[] FeatureSettingId { get; set; } = null!;
 
-    public ulong IsActive { get; set; }
+    public bool IsActive { get; set; }
 
     public virtual FeatureSetting FeatureSetting { get; set; } = null!;
 

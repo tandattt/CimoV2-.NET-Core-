@@ -25,7 +25,7 @@ public partial class Timetable
 
     public string? Weekday { get; set; }
 
-    public byte[] ClassroomId { get; set; } = null!;
+    public byte[]? ClassroomId { get; set; } = null!;
 
     public byte[] SemesterId { get; set; } = null!;
 
